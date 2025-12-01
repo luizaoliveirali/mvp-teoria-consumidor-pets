@@ -46,8 +46,7 @@ A partir desses dados brutos, serão construídas tabelas analíticas para anál
 Conforme informado pelo ONS, o conteúdo está disponível sob a **Open Government Licence v3.0**, o que permite uso, adaptação e redistribuição, desde que haja a devida atribuição da fonte.   
 
 Mais detalhes sobre a licença podem ser consultados em:  
-- [https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
-](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- https://www.nationalarchives.gov.uk/doc/open-government-licence
 Neste repositório:
 
 - Os **arquivos brutos** em `.xlsx` **podem ou não ser versionados**, dependendo do tamanho e das orientações da disciplina.  
