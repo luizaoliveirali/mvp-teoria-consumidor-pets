@@ -5,7 +5,7 @@
 Antes de avançar para a análise econômica, foi realizada uma checagem de qualidade dos dados na tabela fato `fato_despesa_familiar`.
 
 - Não foram encontrados valores nulos nas principais métricas numéricas (`gasto_medio_semanal`, `gasto_medio_total_semanal`, `participacao_orcamento`) segundo a contagem de nulos executada em SQL.
-- Os valores mínimos e máximos de `gasto_medio_semanal` se mantêm em faixa não-negativa, variando aproximadamente entre **[min_gasto]** e **[max_gasto]** libras por semana.
+- Os valores mínimos e máximos de gasto_medio_semanal se mantêm em faixa não-negativa, variando aproximadamente entre **0,1** e **961,6 libras** por semana. A variável participacao_orcamento apresentou valores entre **0,00002** e **0,18** (cerca de 0% a 18% do orçamento), isto é, dentro do intervalo esperado entre 0 e 1 (0% a 100% do orçamento), com shares máximos em torno de 17,9% do orçamento para as categorias de maior peso.
 - A variável `participacao_orcamento` apresentou valores entre **[min_share]** e **[max_share]**, isto é, dentro do intervalo esperado entre 0 e 1 (0% a 100% do orçamento).
 
 Esses resultados indicam que o conjunto de dados está consistente para uso nas análises de teoria do consumidor, sem necessidade de tratamentos adicionais mais pesados (remoção de outliers extremos, imputação etc.).
