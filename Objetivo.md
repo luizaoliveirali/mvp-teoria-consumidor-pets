@@ -89,7 +89,6 @@ mvp-teoria-consumidor-pets/
 ├─ notebooks/
 │  └─ 01_busca_coleta.ipynb
 ├─ docs/
-│  ├─ objetivo.md
 │  ├─ modelo_dados.md
 │  ├─ catalogo_dados.md
 │  ├─ analise_resultados.md
