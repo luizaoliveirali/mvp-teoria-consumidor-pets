@@ -16,11 +16,10 @@ A partir da junção entre a tabela fato e as dimensões de renda e categorias, 
 
 A análise foi realizada somando a variável `participacao_orcamento` apenas para as categorias identificadas com `flag_pet = 1` (ex.: *"Pets and pet food"*). O resultado pode ser resumido da seguinte forma:
 
-- No **1º decil de renda (10% mais pobres)**, a participação dos gastos com pets no orçamento médio semanal é de aproximadamente **[share_pets_d1]%**.
-- No **decil intermediário (por exemplo, 5º decil)**, essa participação é de cerca de **[share_pets_d5]%**.
-- No **10º decil de renda (10% mais ricos)**, a participação alcança aproximadamente **[share_pets_d10]%**.
-
-Observa-se que **[descrever o padrão: por exemplo, "o share de pets aumenta conforme a renda cresce"]**, o que sugere que os gastos com animais de estimação se comportam mais como um **bem de luxo** (ou, no mínimo, como uma categoria de consumo cuja importância relativa tende a ser maior entre as famílias de maior renda).
+- No **1º decil de renda (10% mais pobres)**, a participação dos gastos com pets no orçamento médio semanal é de aproximadamente **1,1%**.
+- No **decil intermediário (5º decil)**, essa participação sobe para cerca de **1,5%**.
+- No **10º decil de renda (10% mais ricos)**, a participação retorna para algo em torno de **1,2%**.
+Observa-se, portanto, que a participação de gastos com pets se mantém **relativamente estável**, variando em torno de 1% a 1,5% ao longo dos decis de renda: há um leve aumento entre os decis intermediários, mas sem um crescimento contínuo nos decis mais ricos. Isso indica que os gastos com animais de estimação não se comportam como um bem estritamente de primeira necessidade, mas também não exibem um padrão de bem de luxo forte, mantendo uma importância percentual relativamente constante na cesta de consumo das famílias.
 
 ## 3. Comparação com a categoria de alimentação (Lei de Engel)
 
