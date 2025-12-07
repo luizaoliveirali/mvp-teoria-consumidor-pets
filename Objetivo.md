@@ -43,6 +43,24 @@ Mesmo que nem todas as perguntas sejam respondidas integralmente, elas definem o
 
 ---
 
+## 📊 Dataset
+
+- **Fonte oficial:** Office for National Statistics (ONS) – Reino Unido  
+- **Pesquisa:** *Family spending in the UK*  
+- **Arquivo utilizado:** *Family spending workbook 1: detailed expenditure and trends* – Tabela A6 (*Detailed household expenditure by gross income decile group*), ano **FYE 2024**  
+- **Nível de agregação:** despesas médias semanais por categoria de consumo, agregadas por **decil de renda bruta**  
+- **Unidade de medida:** gasto médio semanal (em libras) por categoria de despesa e por decil
+
+Neste MVP, foi utilizada especificamente a tabela que traz:
+
+- códigos e descrições das categorias de despesa;
+- gastos médios semanais para cada decil de renda (`d1_lowest` … `d10_highest`);
+- gastos médios para o agregado de todos os domicílios (`all_households`).
+
+Os arquivos brutos (workbook do ONS) não são versionados neste repositório por questões de tamanho e licença, mas o passo a passo para leitura, limpeza e modelagem da tabela A6 está documentado nos notebooks.
+
+---
+
 ## 🏗️ Arquitetura do Pipeline
 
 A solução foi pensada em camadas, seguindo uma abordagem próxima a Data Lake / Data Warehouse:
