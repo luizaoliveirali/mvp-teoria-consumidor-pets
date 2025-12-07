@@ -43,22 +43,6 @@ Mesmo que nem todas as perguntas sejam respondidas integralmente, elas definem o
 
 ---
 
-## 📊 Dataset
-
-> ⚠️ **TODO:** substituir pelos detalhes reais assim que o dataset estiver escolhido e definido.
-
-- **Fonte:** `TODO: nome oficial do dataset`
-- **Link:** `TODO: https://...`
-- **Descrição:**  
-  `TODO: breve descrição – país/ano, unidade de análise (família, domicílio, indivíduo), principais variáveis (renda, despesa por categoria, gastos com pet, etc.).`
-- **Licença / Uso:**  
-  `TODO: descrever a licença conforme página oficial do dataset (quando houver).`
-
-Os arquivos brutos **não necessariamente** serão versionados neste repositório, dependendo do tamanho e da licença.  
-Caso não sejam incluídos, o passo a passo para download e reprodução estará descrito nos notebooks.
-
----
-
 ## 🏗️ Arquitetura do Pipeline
 
 A solução foi pensada em camadas, seguindo uma abordagem próxima a Data Lake / Data Warehouse:
