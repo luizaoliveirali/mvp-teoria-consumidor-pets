@@ -1,1 +1,52 @@
+# Análise dos Resultados
+
+## 1. Qualidade dos dados
+
+Antes de avançar para a análise econômica, foi realizada uma checagem de qualidade dos dados na tabela fato `fato_despesa_familiar`.
+
+- Não foram encontrados valores nulos nas principais métricas numéricas (`gasto_medio_semanal`, `gasto_medio_total_semanal`, `participacao_orcamento`) segundo a contagem de nulos executada em SQL.
+- Os valores mínimos e máximos de `gasto_medio_semanal` se mantêm em faixa não-negativa, variando aproximadamente entre **[min_gasto]** e **[max_gasto]** libras por semana.
+- A variável `participacao_orcamento` apresentou valores entre **[min_share]** e **[max_share]**, isto é, dentro do intervalo esperado entre 0 e 1 (0% a 100% do orçamento).
+
+Esses resultados indicam que o conjunto de dados está consistente para uso nas análises de teoria do consumidor, sem necessidade de tratamentos adicionais mais pesados (remoção de outliers extremos, imputação etc.).
+
+## 2. Participação dos gastos com pets no orçamento por faixa de renda
+
+A partir da junção entre a tabela fato e as dimensões de renda e categorias, foi calculada a participação dos gastos com pets no orçamento total de cada decil de renda. 
+
+A análise foi realizada somando a variável `participacao_orcamento` apenas para as categorias identificadas com `flag_pet = 1` (ex.: *"Pets and pet food"*). O resultado pode ser resumido da seguinte forma:
+
+- No **1º decil de renda (10% mais pobres)**, a participação dos gastos com pets no orçamento médio semanal é de aproximadamente **[share_pets_d1]%**.
+- No **decil intermediário (por exemplo, 5º decil)**, essa participação é de cerca de **[share_pets_d5]%**.
+- No **10º decil de renda (10% mais ricos)**, a participação alcança aproximadamente **[share_pets_d10]%**.
+
+Observa-se que **[descrever o padrão: por exemplo, "o share de pets aumenta conforme a renda cresce"]**, o que sugere que os gastos com animais de estimação se comportam mais como um **bem de luxo** (ou, no mínimo, como uma categoria de consumo cuja importância relativa tende a ser maior entre as famílias de maior renda).
+
+## 3. Comparação com a categoria de alimentação (Lei de Engel)
+
+Para contextualizar os resultados de pets em relação à teoria do consumidor, também foi analisada a participação da categoria de **alimentação** no orçamento, usando as linhas de despesa cujo texto de descrição contém "food" e agrupando sob o rótulo "Alimentação".
+
+A comparação entre os grupos "Pets" e "Alimentação" por decil de renda mostra que:
+
+- A participação da **alimentação** tende a ser **mais alta nos decis de renda mais baixos** e a diminuir à medida que a renda aumenta, comportamento alinhado à **Lei de Engel**, segundo a qual a proporção da renda gasta em alimentação cai com o aumento da renda.
+- Já a participação de **gastos com pets** apresenta o comportamento **[descrever com base nos dados: crescente, estável ou levemente crescente]** ao longo dos decis de renda.
+
+Do ponto de vista de teoria do consumidor, esses resultados são coerentes com a ideia de que:
+
+- a categoria **Alimentação** se aproxima de um **bem de necessidade**, cuja proporção no orçamento cai com a renda, ainda que o gasto absoluto aumente;
+- a categoria **Pets** tende a ser tratada como um bem **mais supérfluo ou de luxo**, cujo peso no orçamento é relativamente maior entre as famílias mais ricas, ou pelo menos não é comprimido da mesma forma que alimentação à medida que a renda aumenta.
+
+## 4. Discussão geral
+
+De forma geral, o modelo de dados construído permite interpretar o comportamento dos gastos com animais de estimação em um contexto de cesta de consumo agregada, ainda que com base em dados médios por decil de renda.
+
+Mesmo com a limitação de não trabalhar com microdados individuais de domicílios, o uso de decis de renda como unidade de análise é suficiente para identificar padrões consistentes com a teoria do consumidor, especialmente:
+
+- a relação entre renda e composição da cesta de consumo;
+- o contraste entre bens de primeira necessidade (alimentação) e categorias mais discricionárias (pets).
+
+Esses resultados abrem espaço para trabalhos futuros, como:
+- incorporar mais de um ano de dados para analisar séries temporais;
+- detalhar a categoria de pets em subitens (ração, serviços veterinários, acessórios etc.);
+- e estimar elasticidades-renda aproximadas a partir da variação do share de cada decil.
 
