@@ -84,8 +84,6 @@ A solução foi pensada em camadas, seguindo uma abordagem próxima a Data Lake 
 
 ## 🗂️ Estrutura do Repositório
 
-> Estrutura sugerida – pode ser ajustada conforme evolução do projeto.
-
 ```text
 mvp-teoria-consumidor-pets/
 ├─ notebooks/
