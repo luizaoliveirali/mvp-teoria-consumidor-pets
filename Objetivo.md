@@ -87,19 +87,13 @@ A solução foi pensada em camadas, seguindo uma abordagem próxima a Data Lake 
 ```text
 mvp-teoria-consumidor-pets/
 ├─ notebooks/
-│  ├─ 01_busca_coleta.ipynb
-│  ├─ 02_modelagem_carga.ipynb
-│  └─ 03_analise_consumidor_pets.ipynb
+│  └─ 01_busca_coleta.ipynb
 ├─ docs/
 │  ├─ objetivo.md
 │  ├─ modelo_dados.md
 │  ├─ catalogo_dados.md
 │  ├─ analise_resultados.md
 │  └─ autoavaliacao.md
-├─ img/
-│  ├─ databricks_pipeline.png
-│  ├─ exemplo_tabela_gold.png
-│  └─ grafico_curva_engel_pets.png
 ├─ data/
 │  └─ README.md   # explicando a fonte dos dados e instruções para obtê-los
 └─ README.md
