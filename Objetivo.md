@@ -1,136 +1,112 @@
-# Pets na Cesta de Consumo 🐶🐱  
-**Análise de gastos com animais de estimação à luz da Teoria do Consumidor**
+# Pets na Cesta de Consumo: Análise de Gastos com Animais de Estimação à Luz da Teoria do Consumidor
 
-Este repositório reúne o MVP desenvolvido para a disciplina de **Engenharia de Dados**, aplicando conceitos de **teoria do consumidor** ao tema dos **gastos com animais de estimação (pets)**.  
-
-O projeto constrói um pequeno **Data Warehouse em nuvem (Databricks)**, a partir de dados oficiais do **Office for National Statistics (ONS)**, para analisar como os gastos com pets são incorporados à cesta de consumo das famílias ao longo dos **decil de renda**.
+Este repositório contém o MVP desenvolvido para a disciplina de **Engenharia de Dados**, com foco em **teoria do consumidor** aplicada aos **gastos com animais de estimação (pets)**.  
+O projeto implementa um pipeline de dados em nuvem para analisar como os gastos com pets são incorporados à cesta de consumo das famílias e em que medida esses gastos são priorizados ou ajustados diante de diferentes níveis de renda.
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Objetivo do Trabalho
 
-O objetivo do trabalho é analisar, à luz da teoria do consumidor, como os **gastos com animais de estimação (pets)** são incorporados à cesta de consumo das famílias e em que medida eles são priorizados ou ajustados diante de diferentes níveis de renda.
+O objetivo deste MVP é analisar, à luz da teoria do consumidor, como os **gastos com animais de estimação (pets)** são incorporados à cesta de consumo das famílias e em que medida eles são priorizados ou ajustados diante de diferentes níveis de renda e de restrição orçamentária.
 
-Mais especificamente, o MVP busca responder:
+Para isso, foi construído um pipeline de dados em nuvem, no Databricks, a partir de dados oficiais de **despesa familiar por decil de renda** (Family Spending – ONS, FYE 2024), com destaque para a categoria de **gastos com pets** em comparação a outras categorias de consumo (como alimentação).
 
-- Qual é a **participação média** dos gastos com pets no orçamento das famílias?
-- Como essa participação se compara a categorias clássicas como **alimentação**?
-- À medida que a renda aumenta (por decil), a participação de pets:
-  - cresce,
-  - cai,
-  - ou se mantém relativamente estável?
-- O comportamento dos gastos com pets se aproxima mais de:
-  - um **bem de necessidade**,
-  - um **bem de luxo**,
-  - ou uma categoria **discricionária “protegida”** no orçamento?
+Do ponto de vista teórico, o trabalho se apoia em conceitos de **teoria do consumidor**, em especial:
 
-As respostas são construídas combinando:
+- restrição orçamentária;
+- **curvas de Engel**;
+- classificação de bens em **normais, inferiores e de luxo**;
+- decisões de alocação de renda entre bens essenciais e não essenciais.
 
-- **modelagem de dados** (esquema estrela),  
-- **pipeline de ETL em SQL no Databricks**,  
-- e **análise econômica** com base em curvas de Engel e composição da cesta de consumo.
+A partir desses conceitos, pretende-se investigar se os gastos com pets se comportam como um bem de necessidade, de luxo ou como um item “protegido” no orçamento das famílias, mesmo em contextos de renda mais limitada.
+
+De forma mais específica, o trabalho busca responder às seguintes **perguntas de negócio**:
+
+1. **Participação de pets na cesta de consumo**
+   - Qual é a participação média dos gastos com pets no orçamento das famílias?  
+   - Como essa participação se compara a outras grandes categorias de despesa (por exemplo, alimentação)?
+
+2. **Renda, curvas de Engel e priorização de gastos**
+   - Como o valor e o **share** dos gastos com pets variam à medida que a renda das famílias aumenta (por decil de renda)?  
+   - A participação dos gastos com pets no orçamento cresce, diminui ou se mantém relativamente estável entre faixas de renda?  
+   - A forma da “curva de Engel” para gastos com pets sugere que eles se comportam como bens de necessidade, de luxo ou apresentam um padrão intermediário?
+
+3. **Resiliência e trade-offs no orçamento (visão agregada)**
+   - Em faixas de renda mais baixa, os gastos com pets são proporcionalmente mais comprimidos, menos comprimidos ou ajustados em intensidade semelhante a outras categorias de consumo (como alimentação)?  
+   - A comparação entre o comportamento de **alimentação** e **pets** ao longo dos decis de renda traz indícios de priorização ou de forte preferência por manter o bem-estar do animal?
+
+Algumas dessas perguntas são exploradas com maior profundidade (especialmente as relativas à participação de pets no orçamento e à comparação com alimentação), enquanto outras ficam como direcionamento para trabalhos futuros, dado que o dataset utilizado é agregado por decil e não contém microdados individuais de famílias.
 
 ---
 
-## 📊 Dados
+## 📊 Dataset
 
-Os dados utilizados são oficiais e públicos:
+- **Fonte oficial:** Office for National Statistics (ONS) – Reino Unido  
+- **Pesquisa:** *Family spending in the UK*  
+- **Arquivo utilizado:** *Family spending workbook 1: detailed expenditure and trends* – Tabela A6 (*Detailed household expenditure by gross income decile group*), ano **FYE 2024**  
+- **Nível de agregação:** despesas médias semanais por categoria de consumo, agregadas por **decil de renda bruta**  
+- **Unidade de medida:** gasto médio semanal (em libras) por categoria de despesa e por decil
 
-- **Fonte:** Office for National Statistics (ONS) – Reino Unido  
-- **Pesquisa:** *Family spending in the UK* (Living Costs and Food Survey – LCF)  
-- **Dataset:** *Family spending workbook 1: detailed expenditure and trends*  
-- **Tabela utilizada:** A6 – *Detailed household expenditure by gross income decile group*  
-- **Ano de referência:** **FYE 2024** (Financial Year Ending 2024)
+Neste MVP, foi utilizada especificamente a tabela que traz:
 
-Principais características:
+- códigos e descrições das categorias de despesa;
+- gastos médios semanais para cada decil de renda (`d1_lowest` … `d10_highest`);
+- gastos médios para o agregado de todos os domicílios (`all_households`).
 
-- Gastos **médios semanais** por domicílio, em **libras (£)**;  
-- Desagregação por **decil de renda bruta** (*gross income decile group*);  
-- Categorias de despesa alinhadas à **COICOP** (ex.: alimentação, transporte, habitação, “Pets and pet food” etc.);  
-- Linhas específicas de despesa com **pets**, que são a base da análise.
-
-Mais detalhes sobre a origem, estrutura e licença dos dados estão descritos em:  
-`data/README.md`
+Os arquivos brutos (workbook do ONS) não são versionados neste repositório por questões de tamanho e licença, mas o passo a passo para leitura, limpeza e modelagem da tabela A6 está documentado nos notebooks.
 
 ---
 
 ## 🏗️ Arquitetura do Pipeline
 
-A solução foi implementada no **Databricks** (Community Edition) em camadas lógicas, aproximando-se de um ambiente de **Data Warehouse**:
+A solução foi modelada em camadas lógicas, aproximando-se de uma abordagem de Data Warehouse (esquema estrela) construída diretamente em SQL no Databricks:
 
-### 1. Bronze – Dados brutos
+1. **Camada Bronze – Dados brutos (importação inicial)**  
+   - Leitura da tabela A6 do arquivo Excel do ONS (*workbook 1*), com os valores de despesa por decil de renda.  
+   - Criação da tabela `family_spending_a6` no Databricks, refletindo a estrutura original (colunas de decil em formato “wide”).
 
-- Leitura da tabela A6 do workbook do ONS (arquivo `.xlsx`).  
-- Criação da tabela inicial `family_spending_a6` no Databricks, refletindo as colunas originais (decis em formato “wide”: `d1_lowest` … `d10_highest`).
+2. **Camada Silver – Dados tratados / estruturados**  
+   - Criação da tabela `family_spending_a6_clean`, com:
+     - padronização de nomes de colunas (`d1_lowest`, `d2_second`, ..., `d10_highest`, `all_households`);
+     - seleção de colunas relevantes (`code`, `description`, gastos por decil).
+   - Transformação do formato “wide” para “long” por meio da view `vw_despesa_long`, em que cada linha representa uma combinação **categoria × decil de renda**, com a respectiva despesa média semanal.
+   - Cálculo do gasto médio total semanal por decil de renda e da variável `participacao_orcamento` (share da categoria no orçamento total do decil), na view `vw_despesa_com_total`.
 
-### 2. Silver – Dados tratados / estruturados
+3. **Camada Gold – Modelo analítico (esquema estrela)**  
+   - Criação das dimensões:
+     - `dim_renda` – informações por decil de renda (id_renda, decil, descrição);
+     - `dim_categoria_consumo` – categorias de despesa (código, descrição, flag para categorias relacionadas a pets);
+     - `dim_tempo` – período de referência (FYE 2024);
+     - `dim_geografia` – agregado Reino Unido.
+   - Criação da tabela fato `fato_despesa_familiar`, contendo:
+     - chaves das dimensões (renda, categoria, tempo, geografia);
+     - `gasto_medio_semanal` (por categoria × decil);
+     - `gasto_medio_total_semanal` (total do decil);
+     - `participacao_orcamento` (share da categoria no orçamento do decil).
 
-- Criação da tabela `family_spending_a6_clean`, com:
-  - padronização de nomes de colunas;
-  - seleção das colunas relevantes (`code`, `description`, gastos por decil e total).
-- Transformação do formato “wide” para “long” por meio da view `vw_despesa_long`:
-  - cada linha passa a representar **[categoria × decil de renda]**.
-- Cálculo do gasto médio total por decil e do **share da categoria no orçamento** (`participacao_orcamento`) na view `vw_despesa_com_total`.
+Essa camada Gold é a base para as análises de teoria do consumidor, como:
 
-### 3. Gold – Modelo analítico (esquema estrela)
-
-- Tabelas de dimensão:
-  - `dim_renda` – decis de renda (1 a 10) e descrições;
-  - `dim_categoria_consumo` – categorias de despesa, com `flag_pet` para identificar gastos com pets;
-  - `dim_tempo` – período de referência (FYE 2024);
-  - `dim_geografia` – agregado “UK total”.
-- Tabela fato:
-  - `fato_despesa_familiar` – gasto médio semanal por categoria × decil, total do decil e participação da categoria no orçamento.
-
-Esse modelo é utilizado para:
-
-- calcular a **participação de pets no orçamento** por decil de renda;
-- comparar **pets x alimentação** e discutir **Lei de Engel**;
-- analisar o comportamento de gastos com pets em diferentes faixas de renda.
-
-Documentação detalhada:
-
-- Modelo de dados: `docs/modelo_dados.md`  
-- Catálogo de dados (dicionário de campos): `docs/catalogo_dados.md`
+- participação dos gastos com pets por decil de renda;
+- comparação entre a participação de alimentação e de pets no orçamento (Lei de Engel);
+- discussão sobre a classificação de pets como bem de necessidade, de luxo ou categoria de consumo relativamente estável.
 
 ---
 
-## 🔎 Análise de Resultados
-
-A análise econômica está detalhada em:  
-`docs/analise_resultados.md`
-
-Principais achados:
-
-- Os gastos com **alimentação** apresentam comportamento compatível com a **Lei de Engel**:
-  - maior participação nos decis de renda mais baixos;
-  - queda da participação relativa à medida que a renda aumenta.
-- Os gastos com **pets**:
-  - mantêm participação **relativamente estável**, em torno de **1% a 1,5%** do orçamento, ao longo dos decis de renda;
-  - apresentam leve aumento em decis intermediários, mas não um crescimento contínuo nos decis mais ricos.
-- Interpretação:
-  - alimentação se comporta como **bem de necessidade** (share cai com a renda);
-  - pets formam uma categoria **discricionária, porém “protegida”**, com peso percentual relativamente estável na cesta de consumo.
-
----
-
-## 🧱 Estrutura do Repositório
-
-> A estrutura abaixo pode variar conforme a disciplina/evolução do projeto, mas resume a organização proposta:
+## 🗂️ Estrutura do Repositório
 
 ```text
 mvp-teoria-consumidor-pets/
 ├─ notebooks/
-│  ├─ 01_busca_coleta.ipynb         # leitura e tratamento dos dados (Bronze/Silver)
-│  ├─ 02_modelagem_carga.ipynb      # criação das tabelas fato/dimensão (Gold)
-│  └─ 03_analise_consumidor_pets.ipynb  # consultas de análise e exploração
+│  ├─ 01_busca_coleta.ipynb
 ├─ docs/
-│  ├─ objetivo.md                   # detalhamento do problema e perguntas de negócio
-│  ├─ modelo_dados.md              # descrição do esquema estrela
-│  ├─ catalogo_dados.md            # dicionário de dados (fato e dimensões)
-│  ├─ analise_resultados.md        # interpretação econômica dos resultados
-│  └─ autoavaliacao.md             # autoavaliação do MVP
+│  ├─ modelo_dados.md
+│  ├─ catalogo_dados.md
+│  ├─ analise_resultados.md
+│  └─ autoavaliacao.md
+├─ img/
+│  ├─ databricks_pipeline.png
+│  ├─ exemplo_tabela_gold.png
+│  └─ grafico_curva_engel_pets.png
 ├─ data/
-│  ├─ README.md                    # instruções para download dos dados na fonte oficial
-│  └─ (arquivos .xlsx/.csv opcionais, conforme orientação da disciplina)
-└─ README.md                       # este arquivo
+│  └─ README.md   # explicando a fonte dos dados e instruções para obtê-los
+└─ Objetivo.md # Este arquivo
