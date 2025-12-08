@@ -99,6 +99,7 @@ mvp-teoria-consumidor-pets/
 ├─ notebooks/
 │  ├─ 01_busca_coleta.ipynb
 ├─ docs/
+│  ├─ Objetivo.md
 │  ├─ modelo_dados.md
 │  ├─ catalogo_dados.md
 │  ├─ analise_resultados.md
@@ -108,4 +109,3 @@ mvp-teoria-consumidor-pets/
 │  └─ grafico_curva_engel_pets.png
 ├─ data/
 │  └─ README.md   # explicando a fonte dos dados e instruções para obtê-los
-└─ Objetivo.md # Este arquivo
