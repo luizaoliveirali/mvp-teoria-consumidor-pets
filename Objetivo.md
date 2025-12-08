@@ -99,13 +99,11 @@ mvp-teoria-consumidor-pets/
 ├─ notebooks/
 │  ├─ 01_busca_coleta.ipynb
 ├─ docs/
-│  ├─ objetivo.md
 │  ├─ modelo_dados.md
 │  ├─ catalogo_dados.md
 │  ├─ analise_resultados.md
 │  └─ autoavaliacao.md
 ├─ img/
-│  ├─ databricks_pipeline.png
 │  ├─ exemplo_tabela_gold.png
 │  └─ grafico_curva_engel_pets.png
 ├─ data/
