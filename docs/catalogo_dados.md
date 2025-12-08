@@ -80,9 +80,3 @@ Dimensão geográfica simples, pois o MVP utiliza apenas o agregado nacional do 
 | `id_geografia`       | Identificador único da região (chave primária).        | INTEGER     | –       | Inteiro (no MVP, sempre 1). | Criado no ETL.                                         |
 | `regiao`             | Nome da região ou agregação geográfica.                | STRING      | –       | Ex.: “UK total”.            | Definido no ETL.                                       |
 | `descricao_geografia`| Texto adicional sobre a agregação geográfica.          | STRING      | –       | Ex.: “Agregado Reino Unido”.| Campo descritivo para facilitar leitura das análises.  |
-
----
-
-Esse catálogo fecha muito bem a documentação do seu DWzinho de pets 🐶📊  
-Se você quiser, me manda agora o texto de `analise_resultados.md` que eu faço a última revisão fina e você fica com o pacote inteiro pronto pra subir no GitHub.
-::contentReference[oaicite:0]{index=0}
