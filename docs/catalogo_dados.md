@@ -53,8 +53,6 @@ Contém as categorias de despesa (linhas do workbook), com identificação de qu
 | `descricao_categoria`| Nome da categoria de gasto.                                                                                     | STRING        | –       | Ex.: “Pets and pet food”, “Veterinary and other services for pets”, “Food and non-alcoholic drinks” etc. | Lido diretamente do workbook.                                                                                    |
 | `flag_pet`           | Indicador se a categoria está diretamente relacionada a gastos com pets.                                        | INTEGER (0/1) | –       | 1 = categoria de pets; 0 = demais categorias.                                                 | Definido no ETL a partir de regras de texto (ex.: `LOWER(descricao_categoria) LIKE '%pet%'`).                   |
 
-*(Campo opcional para trabalhos futuros: `grupo_coicop` – grupo agregador da classificação COICOP. Não foi populado neste MVP.)*
-
 ---
 
 ## 4. Dimensão de Tempo – `dim_tempo`
