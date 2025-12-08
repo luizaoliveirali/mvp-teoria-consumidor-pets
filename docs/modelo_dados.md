@@ -66,8 +66,6 @@ Representa os **grupos de renda** (decis) e suas características derivadas.
 - `descricao_decil` – texto, por exemplo “Decil 1 – 10% mais pobres”, “Decil 10 – 10% mais ricos”  
 - `tipo_renda` – tipo de renda usado na classificação (neste MVP, “renda bruta por decil”, conforme definição do ONS)
 
-*(Campos adicionais como faixas textuais de renda podem ser incluídos em trabalhos futuros, caso a base traga essas informações.)*
-
 **Uso nas análises:**
 
 - Permite comparar a participação dos gastos com pets entre os decis de renda;  
@@ -91,8 +89,6 @@ Representa as categorias de despesa (linhas do workbook), baseadas na classifica
   - “Transport”
   - etc.  
 - `flag_pet` – indicador (0/1) se a categoria está diretamente relacionada a gastos com pets  
-
-*(Campo opcional para trabalhos futuros: `grupo_coicop` – grupo agregador da classificação COICOP. Não foi populado neste MVP.)*
 
 **Uso nas análises:**
 
