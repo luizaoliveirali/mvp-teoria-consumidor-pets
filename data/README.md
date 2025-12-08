@@ -27,7 +27,7 @@ Essas linhas são a base para a análise dos **gastos com pets** no contexto da 
 
 ## Estrutura básica dos dados utilizados
 
-Para o MVP, foi utilizada uma **versão tratada** do workbook, extraindo principalmente:
+Para o MVP, foi utilizada uma **versão tratada** do workbook, extraíndo principalmente:
 
 - ano / período de referência (FYE 2024);  
 - grupo de renda (por decil de renda bruta);  
@@ -41,19 +41,6 @@ A partir desses dados brutos, foram construídas tabelas analíticas para análi
 - comparação com outras categorias de consumo;  
 - variação dessa participação entre faixas de renda.
 
-  ---
-
-## Exemplos visuais
-
-![Exemplo da tabela fato na camada Gold](img/exemplo_tabela_gold.png)  
-**Figura 1 –** Exemplo da tabela fato `fato_despesa_familiar` na camada Gold, com gasto médio semanal, gasto total do decil e participação da categoria no orçamento.
-
-![Curva aproximada de Engel para gastos com pets](img/grafico_curva_engel_pets.png)  
-**Figura 2 –** Curva aproximada de Engel para gastos com pets por decil de renda (FYE 2024), com participação em torno de 1% a 1,5% do orçamento.
-
-  ---
-
-
 ## Licença e uso
 
 Conforme informado pelo ONS, o conteúdo está disponível sob a **Open Government Licence v3.0**, o que permite uso, adaptação e redistribuição, desde que haja a devida atribuição da fonte.   
@@ -65,3 +52,13 @@ Neste repositório:
 
 - Os **arquivos brutos** em `.xlsx` **podem ou não ser versionados**, dependendo do tamanho e das orientações da disciplina.  
 - Caso não sejam incluídos diretamente, este arquivo (`data/README.md`) documenta como obtê-los na fonte oficial, e os notebooks indicam o caminho esperado dos arquivos na plataforma de nuvem utilizada.
+
+---
+
+## Exemplos visuais
+
+![Exemplo da tabela fato na camada Gold](../img/exemplo_tabela_gold.png)  
+**Figura 1 –** Exemplo da tabela fato `fato_despesa_familiar` na camada Gold, com gasto médio semanal, gasto total do decil e participação da categoria no orçamento.
+
+![Curva aproximada de Engel para gastos com pets](../img/grafico_curva_engel_pets.png)  
+**Figura 2 –** Curva aproximada de Engel para gastos com pets por decil de renda (FYE 2024), com participação em torno de 1% a 1,5% do orçamento.
