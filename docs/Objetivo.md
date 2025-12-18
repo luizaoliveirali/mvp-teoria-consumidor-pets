@@ -5,7 +5,7 @@ O projeto implementa um pipeline de dados em nuvem para analisar como os gastos 
 
 ---
 
-## 🎯 Objetivo do Trabalho
+## Objetivo do Trabalho
 
 O objetivo deste MVP é analisar, à luz da teoria do consumidor, como os **gastos com animais de estimação (pets)** são incorporados à cesta de consumo das famílias e em que medida eles são priorizados ou ajustados diante de diferentes níveis de renda e de restrição orçamentária.
 
@@ -39,7 +39,7 @@ Algumas dessas perguntas são exploradas com maior profundidade (especialmente a
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 - **Fonte oficial:** Office for National Statistics (ONS) – Reino Unido  
 - **Pesquisa:** *Family spending in the UK*  
@@ -53,11 +53,11 @@ Neste MVP, foi utilizada especificamente a tabela que traz:
 - gastos médios semanais para cada decil de renda (`d1_lowest` … `d10_highest`);
 - gastos médios para o agregado de todos os domicílios (`all_households`).
 
-Os arquivos brutos (workbook do ONS) não são versionados neste repositório por questões de tamanho e licença, mas o passo a passo para leitura, limpeza e modelagem da tabela A6 está documentado nos notebooks.
+Os arquivos brutos (workbook do ONS) podem ou não ser versionados neste repositório, a depender do tamanho e das orientações da disciplina. De qualquer forma, o passo a passo para leitura, limpeza e modelagem da tabela A6 está documentado nos notebooks.
 
 ---
 
-## 🏗️ Arquitetura do Pipeline
+## Arquitetura do Pipeline
 
 A solução foi modelada em camadas lógicas, aproximando-se de uma abordagem de Data Warehouse (esquema estrela) construída diretamente em SQL no Databricks:
 
@@ -92,12 +92,12 @@ Essa camada Gold é a base para as análises de teoria do consumidor, como:
 
 ---
 
-## 🗂️ Estrutura do Repositório
+## Estrutura do Repositório
 
 ```text
 mvp-teoria-consumidor-pets/
 ├─ notebooks/
-│  ├─ 01_busca_coleta.ipynb
+│  ├─ mvp_pets_cesta_consumo_pipeline.ipynb
 ├─ docs/
 │  ├─ Objetivo.md
 │  ├─ modelo_dados.md
