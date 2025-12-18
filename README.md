@@ -1,4 +1,4 @@
-# Pets na Cesta de Consumo 🐶🐱  
+# Pets na Cesta de Consumo   
 **MVP de Engenharia de Dados – Teoria do Consumidor aplicada a gastos com animais de estimação**
 
 Este repositório reúne o MVP desenvolvido para a disciplina de **Engenharia de Dados**, aplicando conceitos de **teoria do consumidor** ao tema dos **gastos com animais de estimação (pets)**.
@@ -7,7 +7,7 @@ O projeto constrói um pequeno **Data Warehouse em nuvem (Databricks)**, a parti
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 O objetivo do trabalho é analisar, à luz da teoria do consumidor, como os **gastos com animais de estimação (pets)** são incorporados à cesta de consumo das famílias e em que medida eles são priorizados ou ajustados diante de diferentes níveis de renda.
 
@@ -32,7 +32,7 @@ As respostas são construídas combinando:
 
 ---
 
-## 📊 Dados utilizados
+## Dados utilizados
 
 Os dados utilizados são oficiais e públicos:
 
@@ -43,7 +43,7 @@ Os dados utilizados são oficiais e públicos:
 
 O dataset traz o gasto **médio semanal por domicílio**, por **categoria de despesa** (COICOP) e por **decil de renda bruta**. Dentro dessas categorias existem linhas específicas para gastos com **pets**, que são a base das análises.
 
-> 🔎 Detalhes completos sobre:
+> Detalhes completos sobre:
 > - origem dos dados,  
 > - link oficial,  
 > - estrutura das variáveis  
@@ -52,7 +52,7 @@ O dataset traz o gasto **médio semanal por domicílio**, por **categoria de des
 
 ---
 
-## 🏗️ Arquitetura do Pipeline
+## Arquitetura do Pipeline
 
 A solução foi implementada no **Databricks Community Edition**, em camadas lógicas inspiradas em um Data Warehouse:
 
@@ -82,12 +82,27 @@ A solução foi implementada no **Databricks Community Edition**, em camadas ló
 
 Documentação detalhada:
 
-- Modelo de dados: `docs/modelo_dados.md`  
-- Catálogo de dados (dicionário de campos): `docs/catalogo_dados.md`
+- Modelo de dados: [`docs/modelo_dados.md`](docs/modelo_dados.md)  
+- Catálogo de dados (dicionário de campos): [`docs/catalogo_dados.md`](docs/catalogo_dados.md)
 
 ---
 
-## 🔎 Análise dos Resultados
+## Notebook do pipeline
+
+Devido à limitação de criação de múltiplos notebooks na Databricks Community Edition, todas as etapas do MVP (Busca/Coleta, Modelagem/Carga e Análise) foram consolidadas em **um único notebook**:
+
+- `notebooks/mvp_pets_cesta_consumo_pipeline.ipynb`  
+  - Configuração de catálogo/schema  
+  - Criação das tabelas Bronze e Silver  
+  - Transformação wide → long  
+  - Criação das dimensões e tabela fato (camada Gold)  
+  - Consultas de análise (pets, alimentação, Lei de Engel)
+
+Esse notebook serve como reprodução completa do pipeline descrito acima.
+
+---
+
+## Análise dos Resultados
 
 A análise econômica baseia-se na tabela fato e em views adicionais (como `vw_fato_join` e `vw_fato_grupos`), permitindo:
 
@@ -108,28 +123,26 @@ Principais achados (resumidos):
   - pets formam uma categoria **discricionária, porém “protegida”**, cujo peso percentual não é comprimido de forma significativa mesmo entre famílias de menor renda.
 
 A discussão completa está em:  
-`docs/analise_resultados.md`
+[`docs/analise_resultados.md`](docs/analise_resultados.md)
 
 ---
 
-## 🧱 Estrutura do Repositório
+## Estrutura do Repositório
 
 ```text
 mvp-teoria-consumidor-pets/
 ├─ notebooks/
-│  ├─ 01_busca_coleta.ipynb              # leitura + limpeza + transformação wide→long
-│  ├─ 02_modelagem_carga.ipynb           # criação das dimensões e tabela fato (Gold)
-│  └─ 03_analise_consumidor_pets.ipynb   # consultas e análises (teoria do consumidor)
+│  └─ mvp_pets_cesta_consumo_pipeline.ipynb   # pipeline completo (Bronze → Silver → Gold → Análise)
 ├─ docs/
-│  ├─ objetivo.md                        # detalhamento do problema e perguntas
-│  ├─ modelo_dados.md                    # descrição do esquema estrela
-│  ├─ catalogo_dados.md                  # dicionário de dados
-│  ├─ analise_resultados.md              # interpretação dos resultados
-│  └─ autoavaliacao.md                   # autoavaliação do MVP
+│  ├─ objetivo.md                             # detalhamento do problema e perguntas
+│  ├─ modelo_dados.md                         # descrição do esquema estrela
+│  ├─ catalogo_dados.md                       # dicionário de dados
+│  ├─ analise_resultados.md                   # interpretação dos resultados
+│  └─ autoavaliacao.md                        # autoavaliação do MVP
 ├─ data/
-│  ├─ README.md                          # detalhes da fonte de dados e licença (ONS)
+│  ├─ README.md                               # detalhes da fonte de dados e licença (ONS)
 │  └─ (arquivos .xlsx/.csv)
 ├─ img/
-│  ├─ exemplo_tabela_gold.png            # exemplo da tabela fato Gold no Databricks
-│  └─ grafico_curva_engel_pets.png       # curva de Engel aproximada para gastos com pets
-└─ README.md                             # este arquivo
+│  ├─ exemplo_tabela_gold.png                 # exemplo da tabela fato Gold no Databricks
+│  └─ grafico_curva_engel_pets.png            # curva de Engel aproximada para gastos com pets
+└─ README.md                                  # este arquivo
