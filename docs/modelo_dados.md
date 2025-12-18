@@ -6,7 +6,7 @@ Este documento descreve o modelo de dados analítico utilizado no MVP, em format
 
 ## Visão geral
 
-A partir do dataset bruto (Family spending workbook 1 – ONS), o modelo foi organizado em:
+A partir do dataset bruto (*Family spending workbook 1* – ONS), o modelo foi organizado em:
 
 - **1 tabela fato principal**: `fato_despesa_familiar`
 - **4 dimensões** principais:
@@ -41,8 +41,8 @@ Tabela que armazena o gasto médio semanal das famílias com cada categoria de c
 - `id_geografia` – chave estrangeira para `dim_geografia`
 
 - `gasto_medio_semanal` – gasto médio semanal por domicílio naquela categoria (em libras, £)  
-- `gasto_medio_total_semanal` – gasto médio semanal total por domicílio (todas as categorias somadas)  
-- `participacao_orcamento` – participação da categoria no gasto total:  
+- `gasto_medio_total_semanal` – gasto médio semanal total por domicílio (todas as categorias somadas, por decil de renda)  
+- `participacao_orcamento` – participação da categoria no gasto total do decil:  
   - `participacao_orcamento = gasto_medio_semanal / gasto_medio_total_semanal`
 
 **Observação:**  
