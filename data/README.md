@@ -48,11 +48,6 @@ Conforme informado pelo ONS, o conteúdo está disponível sob a **Open Governme
 Mais detalhes sobre a licença podem ser consultados em:  
 https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 
-Neste repositório:
-
-- Os **arquivos brutos** em `.xlsx` **podem ou não ser versionados**, dependendo do tamanho e das orientações da disciplina.  
-- Caso não sejam incluídos diretamente, este arquivo (`data/README.md`) documenta como obtê-los na fonte oficial, e os notebooks indicam o caminho esperado dos arquivos na plataforma de nuvem utilizada.
-
 ---
 
 ## Exemplos visuais
@@ -62,3 +57,14 @@ Neste repositório:
 
 ![Curva aproximada de Engel para gastos com pets](../img/grafico_curva_engel_pets.png)  
 **Figura 2 –** Curva aproximada de Engel para gastos com pets por decil de renda (FYE 2024), com participação em torno de 1% a 1,5% do orçamento.
+
+---
+
+## Arquivos incluídos neste diretório
+
+- `family_spending_workbook1_fye2024.xlsx`  
+  Arquivo original baixado do ONS, contendo todas as tabelas do workbook 1 (FYE 2024).
+
+- `family_spending_a6.csv` (opcional)  
+  Extrato da tabela A6, já isolada para uso no Databricks.
+
