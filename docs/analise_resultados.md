@@ -31,7 +31,7 @@ A comparação entre os grupos "Pets" e "Alimentação" por decil de renda mostr
 - A participação da **alimentação** tende a ser **mais alta nos decis de renda mais baixos** e a diminuir à medida que a renda aumenta, comportamento alinhado à **Lei de Engel**, segundo a qual a proporção da renda gasta em alimentação cai com o aumento da renda.
 - Já a participação de **gastos com pets** apresenta um comportamento **moderadamente estável**, variando em torno de 1% a 1,5% do orçamento ao longo dos decis de renda: sai de cerca de 1,1% no 1º decil, atinge aproximadamente 1,5% em decis intermediários e volta a ficar próxima de 1,2% no 10º decil.
 
-Do ponto de vista de teoria do consumidor, esses resultados são coerentes com a ideia de que:
+Do ponto de vista da teoria do consumidor, esses resultados são coerentes com a ideia de que:
 
 - a categoria **Alimentação** se aproxima de um **bem de necessidade**, cuja proporção no orçamento cai com a renda, ainda que o gasto absoluto aumente;
 - a categoria **Pets** não se comporta como um bem estritamente essencial, mas também não apresenta o padrão típico de bem de luxo, no qual o share cresce fortemente com a renda. Em vez disso, os gastos com pets parecem compor uma categoria **discricionária, porém relativamente “protegida”**, mantendo um peso percentual estável na cesta de consumo à medida que a renda aumenta.
