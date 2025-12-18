@@ -134,7 +134,7 @@ mvp-teoria-consumidor-pets/
 ├─ notebooks/
 │  └─ mvp_pets_cesta_consumo_pipeline.ipynb   # pipeline completo (Bronze → Silver → Gold → Análise)
 ├─ docs/
-│  ├─ objetivo.md                             # detalhamento do problema e perguntas
+│  ├─ Objetivo.md                             # detalhamento do problema e perguntas
 │  ├─ modelo_dados.md                         # descrição do esquema estrela
 │  ├─ catalogo_dados.md                       # dicionário de dados
 │  ├─ analise_resultados.md                   # interpretação dos resultados
